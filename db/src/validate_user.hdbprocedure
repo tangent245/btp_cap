@@ -1,0 +1,33 @@
+-- Procedure: VALIDATE_USER
+PROCEDURE "validate_user" (
+  IN "IN_USERNAME" NVARCHAR(256),
+  IN "IN_PASSWORD" NVARCHAR(256),
+  OUT "EX_MESSAGE" NVARCHAR(200)
+)
+LANGUAGE SQLSCRIPT
+AS
+BEGIN
+  DECLARE user_exists INTEGER := 0;
+  DECLARE correct_password INTEGER := 0;
+
+  -- Check if the username exists
+  SELECT COUNT(*) INTO user_exists
+  FROM "user_data"
+  WHERE "username" = :IN_USERNAME;
+
+  IF user_exists > 0 THEN
+    -- Validate the password
+    SELECT COUNT(*) INTO correct_password
+    FROM "user_data"
+    WHERE "username" = :IN_USERNAME
+      AND "password" = :IN_PASSWORD;
+
+    IF correct_password > 0 THEN
+      "EX_MESSAGE" := 'Login successful.';
+    ELSE
+      "EX_MESSAGE" := 'Invalid password.';
+    END IF;
+  ELSE
+    "EX_MESSAGE" := 'Username does not exist.';
+  END IF;
+END;

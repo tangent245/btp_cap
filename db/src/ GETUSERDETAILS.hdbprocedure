@@ -1,0 +1,17 @@
+PROCEDURE "GETUSERDETAIL" ()
+LANGUAGE SQLSCRIPT
+AS
+BEGIN
+    -- Fetch all user data
+    SELECT
+        "user_id",
+        "username",
+        "email",
+        "password",
+        "full_name",
+        "date_of_birth",
+        "registration_date",
+        "status"
+    FROM
+        "user_data";
+END;
