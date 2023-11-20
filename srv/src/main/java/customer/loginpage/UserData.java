@@ -22,16 +22,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@SqlResultSetMapping(name = "user_mapping", classes =
-@ConstructorResult(targetClass = UserData.class, columns = {
-@ColumnResult(name = "user_id", type = Long.class),
-@ColumnResult(name = "username", type = String.class),
-@ColumnResult(name = "email", type = String.class),
-@ColumnResult(name = "password", type = String.class),
-@ColumnResult(name = "full_name", type = String.class),
-@ColumnResult(name = "date_of_birth", type = Date.class),
-@ColumnResult(name = "registration_date", type = Date.class),
-@ColumnResult(name = "status", type = Integer.class)
+@SqlResultSetMapping(name = "user_mapping", classes = @ConstructorResult(targetClass = UserData.class, columns = {
+        @ColumnResult(name = "user_id", type = Long.class),
+        @ColumnResult(name = "username", type = String.class),
+        @ColumnResult(name = "email", type = String.class),
+        @ColumnResult(name = "password", type = String.class),
+        @ColumnResult(name = "full_name", type = String.class),
+        @ColumnResult(name = "date_of_birth", type = Date.class),
+        @ColumnResult(name = "registration_date", type = Date.class),
+        @ColumnResult(name = "status", type = Integer.class)
 }))
 @Entity
 @Getter
@@ -58,22 +57,27 @@ public class UserData {
     // @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
-    // @Column(name = "registration_date", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
+    // @Column(name = "registration_date", columnDefinition = "DATETIME DEFAULT
+    // CURRENT_TIMESTAMP")
     // @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
 
     // @Column(name = "status", nullable = false)
     private Integer status;
 
-//    public UserData(){
+    public UserData() {
 
-//    }
-    public UserData(String username, String email, String password, String fullName, Date dateOfBirth, Integer status) {
+    }
+
+    public UserData(Long userId, String username, String email, String password, String fullName, Date dateOfBirth,
+            Date registrationDate, Integer status) {
+        this.userId = userId;
         this.username = username;
         this.email = email;
         this.password = password;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
+        this.registrationDate = registrationDate;
         this.status = status;
     }
 

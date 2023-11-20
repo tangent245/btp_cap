@@ -13,7 +13,7 @@ public class UserDao {
     @PersistenceContext
     private EntityManager entityManager;
  
-    public Collection<UserData> getAllUsers() {
+    public Collection<UserData> jgetAllUsers() {
         try {
             Collection<UserData> results = new ArrayList<UserData>();
             if (entityManager != null) {
