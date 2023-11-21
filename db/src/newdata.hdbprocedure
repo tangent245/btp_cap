@@ -1,0 +1,14 @@
+PROCEDURE "CREATEDATA"(IN p_username NVARCHAR(256),
+   IN p_email NVARCHAR(256),
+   IN p_password NVARCHAR(256),
+   IN p_full_name NVARCHAR(256),
+   IN p_date_of_birth DATE,
+   IN p_status INTEGER
+)
+LANGUAGE SQLSCRIPT
+AS
+BEGIN
+
+    INSERT INTO "user_data" ("username", "email", "password", "full_name", "date_of_birth","status")
+    VALUES (p_username, p_email, p_password, p_full_name, p_date_of_birth, p_status);
+END;
