@@ -1,0 +1,22 @@
+PROCEDURE "UPDATEENTITY"(
+    IN p_user_id BIGINT,
+    IN p_username NVARCHAR(256),
+    IN p_email NVARCHAR(256),
+    IN p_password NVARCHAR(256),
+    IN p_full_name NVARCHAR(256),
+    IN p_date_of_birth DATE,
+    IN p_status INTEGER
+)LANGUAGE SQLSCRIPT
+AS
+BEGIN
+    UPDATE "user_data"
+    SET
+        "username" = p_username,
+        "email" = p_email,
+        "password" = p_password,
+        "full_name" = p_full_name,
+        "date_of_birth" = p_date_of_birth,
+        "status" = p_status
+    WHERE "user_id" = p_user_id;
+END;
+
