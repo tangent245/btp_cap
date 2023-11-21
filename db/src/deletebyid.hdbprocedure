@@ -1,0 +1,6 @@
+ PROCEDURE "DELETEENTITY"(IN p_user_id BIGINT)
+ LANGUAGE SQLSCRIPT
+AS
+BEGIN
+    DELETE FROM "user_data" WHERE "user_id" = p_user_id;
+END
