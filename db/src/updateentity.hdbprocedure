@@ -1,5 +1,5 @@
 PROCEDURE "UPDATEENTITY"(
-   
+    IN p_user_id BIGINT,
     IN p_username NVARCHAR(256),
     IN p_email NVARCHAR(256),
     IN p_password NVARCHAR(256),
