@@ -1,5 +1,5 @@
 PROCEDURE "UPDATEENTITY"(
-    IN p_user_id BIGINT,
+    -- IN p_user_id BIGINT,
     IN p_username NVARCHAR(256),
     IN p_email NVARCHAR(256),
     IN p_password NVARCHAR(256),
@@ -16,7 +16,7 @@ BEGIN
         "password" = p_password,
         "full_name" = p_full_name,
         "date_of_birth" = p_date_of_birth,
-        "status" = p_status
-    WHERE "user_id" = p_user_id;
+        "status" = p_status;
+    -- WHERE "user_id" = p_user_id;
 END;
 
