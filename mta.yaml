@@ -40,9 +40,23 @@ modules:
       - loginui.zip
       name: loginui
       target-path: resources/
+    - artifacts:
+      - project1.zip
+      name: project1
+      target-path: resources/
 - name: loginui
   type: html5
   path: loginui
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: project1
+  type: html5
+  path: project1
   build-parameters:
     build-result: dist
     builder: custom
