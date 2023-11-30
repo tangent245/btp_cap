@@ -1,27 +1,31 @@
-package customer.loginpage;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.stereotype.Service;
 
-@Service
-public class UserDataService {
+// import java.util.Collection;
+// import java.util.List;
+// import java.util.Optional;
 
-    // @Autowired
-    // private UserDataRepository userRepository;
+// @Service
+// public class UserDataService {
 
-    @Autowired
-    private UserDao userDao;
+//     // @Autowired
+//     // private UserDataRepository userRepository;
 
-    // Get all users
-    public Collection<UserData> getAllUsers() {
+//     @Autowired
+//     private UserDao userDao;
 
-        return userDao.jgetAllUsers();
-    }
+//     // Get all users
+//     public Collection<UserData> getAllUsers() {
 
+//         return userDao.jgetAllUsers();
+//     }
+
+
+
+
+   
     // Get user by ID
     // public UserData getUserById(Long userId) {
     // Optional<UserData> userOptional = userRepository.findById(userId);
@@ -58,4 +62,38 @@ public class UserDataService {
     // userRepository.deleteById(userId);
     // }
     // }
+
+package customer.loginpage;
+    import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Collection;
+import java.util.List;
+
+@Service
+public class UserDataService {
+
+    @Autowired
+    private UserDao userDAO;
+
+    public UserData getById(Long id) {
+        return userDAO.getById(id);
+    }
+
+    public Collection<UserData> getAll() {
+        return userDAO.getAll();
+    }
+
+    public UserData create(UserData entity) {
+        return userDAO.create(entity);
+    }
+
+    public UserData update(UserData entity) {
+        return userDAO.update(entity);
+    }
+
+    public void delete(Long id) {
+        userDAO.delete(id);
+    }
 }
+
